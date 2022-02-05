@@ -4,6 +4,7 @@
  */
 package br.edu.ifsul.dao;
 
+import br.edu.ifsul.converters.ConverterOrdem;
 import java.io.Serializable;
 import br.edu.ifsul.modelo.Especialidade;
 import javax.ejb.Stateful;
@@ -18,5 +19,13 @@ public class EspecialidadeDAO<TIPO> extends DAOGenerico<Especialidade> implement
     public EspecialidadeDAO(){
         super();
         classePersistente = Especialidade.class;
+        //Definir as ordens possiveis
+        listaOrdem.add(new Ordem("id", "ID", "="));
+        listaOrdem.add(new Ordem("descricao", "Descricao", "like"));
+        //Definir a ordem inicial
+        ordemAtual = listaOrdem.get(1);
+        //Inicializar o conversor das ordens
+        converterOrdem = new ConverterOrdem();
+        converterOrdem.setListaOrdem(listaOrdem);
     }
 }
