@@ -5,7 +5,7 @@
 package br.edu.ifsul.dao;
 
 import br.edu.ifsul.converters.ConverterOrdem;
-import br.edu.ifsul.modelo.Medico;
+import br.edu.ifsul.modelo.Exame;
 import java.io.Serializable;
 import javax.ejb.Stateful;
 
@@ -14,14 +14,15 @@ import javax.ejb.Stateful;
  * @author João
  */
 @Stateful
-public class MedicoDAO<TIPO> extends DAOGenerico<Medico> implements Serializable  {
+public class ExameDAO<TIPO> extends DAOGenerico<Exame> implements Serializable  {
     
-    public MedicoDAO(){
+    public ExameDAO(){
         super();
-        classePersistente = Medico.class;
+        classePersistente = Exame.class;
         //Definir as ordens possiveis
+        listaOrdem.add(new Ordem("id", "ID", "="));
         listaOrdem.add(new Ordem("nome", "Nome", "like"));
-        listaOrdem.add(new Ordem("crm", "CRM", "="));
+        listaOrdem.add(new Ordem("descricao", "Descricao", "like"));
         //Definir a ordem inicial
         ordemAtual = listaOrdem.get(1);
         //Inicializar o conversor das ordens

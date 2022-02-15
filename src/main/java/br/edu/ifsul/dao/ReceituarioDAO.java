@@ -5,7 +5,7 @@
 package br.edu.ifsul.dao;
 
 import br.edu.ifsul.converters.ConverterOrdem;
-import br.edu.ifsul.modelo.Medico;
+import br.edu.ifsul.modelo.Receituario;
 import java.io.Serializable;
 import javax.ejb.Stateful;
 
@@ -14,18 +14,25 @@ import javax.ejb.Stateful;
  * @author João
  */
 @Stateful
-public class MedicoDAO<TIPO> extends DAOGenerico<Medico> implements Serializable  {
+public class ReceituarioDAO<TIPO> extends DAOGenerico<Receituario> implements Serializable  {
     
-    public MedicoDAO(){
+    public ReceituarioDAO(){
         super();
-        classePersistente = Medico.class;
+        classePersistente = Receituario.class;
         //Definir as ordens possiveis
-        listaOrdem.add(new Ordem("nome", "Nome", "like"));
-        listaOrdem.add(new Ordem("crm", "CRM", "="));
+        listaOrdem.add(new Ordem("id", "ID", "="));
+        listaOrdem.add(new Ordem("posologia", "Posologia", "like"));
         //Definir a ordem inicial
         ordemAtual = listaOrdem.get(1);
         //Inicializar o conversor das ordens
         converterOrdem = new ConverterOrdem();
         converterOrdem.setListaOrdem(listaOrdem);
+    }
+    
+    public Receituario getObjectByID(Object id) throws Exception {
+        Receituario obj = em.find(Receituario.class, id);
+        //Uso para evitar lazyinitializationexception
+        obj.getMedicamentos().size();
+        return obj;
     }
 }
