@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.18.1.final using JasperReports Library version 6.18.1-9d75d1969e774d4f179fb3be8401e98a0e6d1611  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="subRelatorios" pageWidth="267" pageHeight="842" columnWidth="267" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="f6dfb6eb-33b2-439b-882c-73a8bec76f9a">
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="zebra">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 != 0)]]></conditionExpression>
+			<style backcolor="#FFFDCF"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id_1" class="java.lang.Integer">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="posologia" class="java.lang.String">
+		<fieldDescription><![CDATA[posologia]]></fieldDescription>
+	</field>
+	<field name="validade" class="java.util.Calendar">
+		<fieldDescription><![CDATA[validade]]></fieldDescription>
+	</field>
+	<columnHeader>
+		<band height="50" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<rectangle>
+				<reportElement x="0" y="20" width="67" height="20" uuid="64fdb383-b5e0-498a-994f-4a548a159bea"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="67" y="20" width="100" height="20" uuid="c94ad878-0b9f-415a-a585-26abb1cb8285"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="0" width="267" height="20" backcolor="#B8FFFD" uuid="6ae0ece7-2932-4951-8006-4dc8fc5de01b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="10" y="20" width="57" height="20" uuid="f7f6b83f-33d0-4f59-93d6-769421c1bed4">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4f45eb27-4f76-420b-8648-a0346444f88a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="70" y="20" width="97" height="20" uuid="c687fa54-d2ec-4d26-9d31-35c6784368f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7e2293c-fd5b-4508-9628-be75606fdedf"/>
+				</reportElement>
+				<text><![CDATA[Posologia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="170" y="20" width="97" height="20" uuid="286299cc-36ca-4d41-a2db-e462760e03a9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c48dd2ad-bc32-4c8d-9994-1bd3bcc892d3"/>
+				</reportElement>
+				<text><![CDATA[Validade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="0" width="210" height="20" uuid="b5e28cda-7747-472f-9c81-eb14fcb738b0">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[RECEITUÁRIOS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<rectangle>
+				<reportElement x="0" y="-10" width="267" height="30" uuid="bea7c305-1bc3-4cbe-b91a-8ec621478c61"/>
+			</rectangle>
+			<textField>
+				<reportElement x="10" y="-10" width="57" height="30" uuid="50366187-3a8f-43b0-9c36-eb5f9c74351a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ccb61055-e3a2-427d-835b-e642d6a1ad55"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{id_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="70" y="-10" width="97" height="30" uuid="2e2419d9-e2ef-41c5-85e8-67953a13ca0d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c213cc22-500c-4b81-9973-7454ddcccab3"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{posologia}]]></textFieldExpression>
+			</textField>
+			<textField pattern="d/MM/yyyy">
+				<reportElement x="170" y="-10" width="97" height="30" uuid="e73a9ba3-3cd9-42e3-a29e-2d7ff31b025c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3f6d65a9-4ec1-4da6-b389-f0055bfc3c44"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{validade}.getTime()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

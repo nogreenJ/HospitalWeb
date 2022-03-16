@@ -65,12 +65,12 @@
                         <p:outputLabel value="#{obj.posologia}"/>
                     </p:column>
                     <p:column headerText="Validade">
-                        <p:outputLabel value="#{obj.validade}">
+                        <p:outputLabel value="#{obj.validade.time}">
                             <f:convertDateTime pattern="dd/MM/yyyy"/>
                         </p:outputLabel>
                     </p:column>
                     <p:column headerText="Consulta">
-                        <p:outputLabel value="#{obj.consulta.descricao}"/>
+                        <p:outputLabel value="#{obj.consulta.preConsulta}"/>
                     </p:column>
                     <p:column headerText="Ações">
                         <div align="center">

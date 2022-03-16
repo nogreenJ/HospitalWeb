@@ -17,7 +17,7 @@ public class Util {
             e = (Exception) e.getCause();
         }
         String retorno = e.getMessage();
-        if(retorno.contains("vola restrição de chave estraingeira")){
+        if(retorno.contains("volta restrição de chave estrangeira")){
             retorno = "Registro não pode ser removido por possuir referências a chaves estrangeiras";
         }
         return retorno;

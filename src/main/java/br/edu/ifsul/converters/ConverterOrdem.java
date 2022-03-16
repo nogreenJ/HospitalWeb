@@ -22,6 +22,8 @@ import javax.faces.convert.FacesConverter;
 public class ConverterOrdem implements Serializable, Converter {
     
     private List<Ordem> listaOrdem;
+    
+    public ConverterOrdem(){}
 
     @Override
     public Object getAsObject(FacesContext arg0, UIComponent arg1, String arg2) {

@@ -15,7 +15,8 @@
                 <p:menuitem value="Home"
                             url="#{facesContext.externalContext.requestContextPath}/index.xhtml"
                             icon="pi pi-home"/>
-                <p:submenu label="Cadastros">
+                <p:submenu label="Cadastros"
+                           rendered="#{controleLogin.usuarioAutenticado != null}">
                     <p:column>
                         <p:submenu label="Básicos">
                             <p:menuitem action="#{controleEspecialidade.listar()}"
@@ -38,9 +39,43 @@
                                         ajax="false"/> 
                             <p:menuitem action="#{controleReceituario.listar()}"
                                         value="Manutenção de Receituarios"
+                                        ajax="false"/>  
+                            <p:menuitem action="#{controleUsuario.listar()}"
+                                        value="Manutenção de Usuários"
                                         ajax="false"/>                           
                         </p:submenu>
                     </p:column>                
+                </p:submenu>
+                <p:submenu label="Relatórios">
+                    <p:column>
+                        <p:submenu label="Básicos">
+                            <p:menuitem action="#{controleMedico.imprimeMedicos()}"
+                                        value="Imprimir Médicos"
+                                        icon="pi pi-print"
+                                        ajax="false"
+                                        target="_blank"/> 
+                            <p:menuitem action="#{controleConsulta.imprimeConsultas()}"
+                                        value="Imprimir Consultas"
+                                        icon="pi pi-print"
+                                        ajax="false"
+                                        target="_blank"/>                   
+                        </p:submenu>
+                    </p:column>                
+                </p:submenu>
+                <p:submenu label="Usuário: #{controleLogin.usuarioAutenticado != null ?
+                                             controleLogin.usuarioAutenticado.nome : ''}">
+                    <p:column>
+                        <p:submenu label="Efetuar Login"
+                            rendered="#{controleLogin.usuarioAutenticado == null}">
+                                   <p:menuitem action="#{controleLogin.irPaginaLogin()}"
+                                               value="Login" icon="pi pi-user" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Efetuar Logout"
+                            rendered="#{controleLogin.usuarioAutenticado != null}">
+                                   <p:menuitem action="#{controleLogin.logout()}"
+                                               value="Logout" icon="pi pi-power-off" ajax="false"/>
+                        </p:submenu>
+                    </p:column>
                 </p:submenu>
             </p:megaMenu>
         </h:form>

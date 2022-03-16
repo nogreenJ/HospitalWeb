@@ -36,7 +36,7 @@ public class ControlePaciente implements Serializable{
     
     public void alterar(Object id){
        try{
-           objeto = dao.getObjectById(id);
+           objeto = dao.localizar(id);
        } catch(Exception e){
            Util.mensagemInformacao("Erro ao recuperar objeto" + Util.getMensagemErro(e));
        }
@@ -44,8 +44,8 @@ public class ControlePaciente implements Serializable{
     
     public void excluir(Object id){
        try{
-           objeto = dao.getObjectById(id);
-           dao.remove(objeto);
+           objeto = dao.localizar(id);
+           dao.remover(objeto);
            Util.mensagemInformacao("Objeto removido com sucesso");
        } catch(Exception e){
            Util.mensagemInformacao("Erro ao remover objeto" + Util.getMensagemErro(e));
